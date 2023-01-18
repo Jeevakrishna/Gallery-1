@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=Chrome">
+  <title>E-cell gallery</title>
+  <style media="screen">
+  *{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+@keyframes fade{
+from{
+  opacity:0.4;
+}
+to{
+  opacity:1;
+}
+}
+
+body{
+background: grey   ;
+
+margin: 100px auto;
+}
+
+#slider{
+margin:0 auto;
+width:50%;
+height: 400px;
+overflow:hidden;
+padding: 10px;
+background: white;
+}
+
+.slides{
+overflow:hidden;
+animation-name:fade;
+animation-duration:1s;
+display:none;
+}
+
+img{
+width:100%;
+height: 350px;
+}
+
+#dot{
+margin:0 auto;
+text-align:center;
+}
+.dot{
+display:inline-block;
+border-radius:50%;
+background:#d3d3d3;
+padding:8px;
+margin:10px 5px;
+}
+
+.active{
+background:black;
+}
+
+@media (max-width:567px){
+#slider{
+  width:100%;
+
+}
+}
+
+#heading{
+display:block;
+text-align:center;
+font-size:2em;
+margin:10px 0px;
+
+}
+  </style>
+</head>
+<body>
+
+ 
+  <div id="slider">
+  <div class="slides">
+    <img src="a.jpg" width="100%" />
+   </div>
+
+    <div class="slides">
+    <img src="b.jpg" width="100%" />
+  </div>
+
+    <div class="slides">
+    <img src="c.jpg" width="100%" />
+  </div>
+
+     <div class="slides">
+    <img src="d.jpg" width="100%" />
+  </div>
+
+  <div class="slides">
+    <img src="e.jpg" width="100%" />
+  </div>
+
+  <div class="slides">
+    <img src="f.jpg" width="100%" />
+  </div>
+
+  <div class="slides">
+    <img src="g.jpg" width="100%" />
+  </div>
+
+    <div id="dot"><span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+   </div>
+
+<script type="text/javascript">
+var index = 0;
+var slides = document.querySelectorAll(".slides");
+var dot = document.querySelectorAll(".dot");
+
+function changeSlide(){
+
+  if(index<0){
+    index = slides.length-1;
+  }
+
+  if(index>slides.length-1){
+    index = 0;
+  }
+
+  for(let i=0;i<slides.length;i++){
+    slides[i].style.display = "none";
+    dot[i].classList.remove("active");
+  }
+
+  slides[index].style.display= "block";
+  dot[index].classList.add("active");
+
+  index++;
+
+  setTimeout(changeSlide,2000);
+
+}
+
+changeSlide();
+</script>
+</body>
+</html>
